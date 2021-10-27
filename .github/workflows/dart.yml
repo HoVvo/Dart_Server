@@ -21,14 +21,5 @@ jobs:
       - name: Analyze project source
         run: dart analyze
         
-      - name: Start the server
-        run: |
-          dart pub global activate stagehand
-          mkdir testapp
-          cd testapp
-          stagehand console-simple
-          dart pub get
-          dart run
-        
       - name: Run tests
         run: dart test
