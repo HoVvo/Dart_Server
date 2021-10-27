@@ -22,7 +22,13 @@ jobs:
         run: dart analyze
         
       - name: Start the server
-        run: dart run bin/server.dart
+        run: |
+          dart pub global activate stagehand
+          mkdir testapp
+          cd testapp
+          stagehand console-simple
+          dart pub get
+          dart run
         
       - name: Run tests
         run: dart test
