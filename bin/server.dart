@@ -17,13 +17,17 @@ final server_handler = {
   'Access-Control-Allow-Headers': 'Origin, Content-Type',
 };
 
-void main(List<String> args) async {
-  var app = Router();
+late Router app = Router();
 
+void main(List<String> args) async {
   // Static file
   app.get('/assets/<file|.*>', createStaticHandler('public'));
 
   //Api Routing
+  app.get('/', (Request req) {
+    return Response.ok('Hello World');
+  });
+
   app.mount('/users/', userApi().router);
 
   // Return Html response
